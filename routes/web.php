@@ -19,3 +19,7 @@ Route::get('products', function () {
     return view('section.products');
 })->name('section.products');
     
+Route::get('project-members', function () {
+    return view('section.members');
+})->name('section.members');
+    

@@ -20,8 +20,8 @@
                         More
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Source Code</a>
-                        <a class="dropdown-item" href="#">Project Members</a>
+                        <a class="dropdown-item" href="https://github.com/xitish/MinorProject">Source Code</a>
+                        <a class="dropdown-item" href="{{ route('section.members') }}">Project Members</a>
                     </div>
                 </li>
             </ul>
