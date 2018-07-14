@@ -15,7 +15,7 @@
                 <img src="images/2.jpg" class="image" alt="Movie Poster">
                 <div class="description">
                     <b>Black Panther</b>
-                    <br> 2018
+                    <br> 2018 | <a href="{{ route('section.product', ['id' => 1]) }}">View</a>
                 </div>
             </div>
             <div class="col-md-3 col-6 mar">

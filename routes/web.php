@@ -18,7 +18,11 @@ Route::get('/', function () {
 Route::get('products', function () {
     return view('section.products');
 })->name('section.products');
-    
+
+Route::get('products/{id}', function () {
+    return view('section.product');
+})->name('section.product');
+
 Route::get('project-members', function () {
     return view('section.members');
 })->name('section.members');
