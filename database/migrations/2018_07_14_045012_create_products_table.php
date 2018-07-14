@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->float('price', 8, 2);
             $table->float('rating', 1, 1);
+            $table->string('image');
             $table->timestamps();
         });
     }
