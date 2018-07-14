@@ -27,3 +27,4 @@ Route::get('project-members', function () {
     return view('section.members');
 })->name('section.members');
     
+Auth::routes();
