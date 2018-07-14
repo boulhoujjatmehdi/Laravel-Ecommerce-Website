@@ -11,6 +11,8 @@
     <body>
 
         @include('partials.header')
+        
+        <div style="margin-top:75px;"></div>
 
         @yield('content')
         

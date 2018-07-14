@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<div style="margin-top:100px;"></div>
     <div class="container">
     <div class="card text-center border-success">
         <div class="card-header bg-success text-white">
