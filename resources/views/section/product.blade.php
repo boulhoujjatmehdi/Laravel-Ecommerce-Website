@@ -23,20 +23,19 @@
         </div>
         <hr>
         <div class="row">
-
-            <form class="col-md-6" id="review1">
+            <form  action="{{ route('write', ['id' => 1 ]) }}" method="post" class="col-md-6" id="review1">
+            @include('partials.errors')
                 <div class="form-group">
                     <label for="reviewbox">
                         <h5>Your Review</h5>
                     </label>
-                    <textarea type="text" class="form-control" id="reviewbox" aria-describedby="reviewlHelp" placeholder="Write a Review" style="min-height:100px"
-                        required></textarea>
+                    <textarea type="text" class="form-control" id="reviewbox" aria-describedby="reviewlHelp" placeholder="Write a Review" style="min-height:100px" name="review" required></textarea>
                     <small id="reviewHelp" class="form-text text-muted">Tell us how you feel about the product.</small>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-primary">Submit</button/>
                 <hr>
-                <p>The rating of the product is generated based on the review you provide.</p> 
+                <p>The rating of the product is generated based on the review you provide.</p>
             </form>
 
             <div class="col-md-6" id="review">
