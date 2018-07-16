@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     public function getProduct($id)
     {
-        $product = Product::where('id','=',$id)->with('reviews')->with('users')->get();              //Same as Post::find($id)  = sign in where clausecan also  be removed
+        $product = Product::where('id','=',$id)->with('reviews.user')->first();             //Same as Post::find($id)  = sign in where clausecan also  be removed
         return view('section.product', ['product' => $product]);
     }
 

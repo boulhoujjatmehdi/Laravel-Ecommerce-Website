@@ -25,7 +25,7 @@ Route::get('products/{id}', [
     'as' => 'section.product'
 ]);
 
-Route::post('write/{id}',[
+Route::post('products/{id}/review',[
     'uses' =>  'ProductController@postWriteReview',
     'as' => 'write',
     'middleware' => 'auth'
