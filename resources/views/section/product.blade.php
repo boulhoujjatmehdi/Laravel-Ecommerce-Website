@@ -1,5 +1,4 @@
-@extends('layouts.master') 
-@section('content')
+@extends('layouts.master') @section('content')
 
 <div class="container">
     <div class="card border-primary">
@@ -21,22 +20,40 @@
         <div>
 
         </div>
-        <hr>
+        <hr> @if(Session::has('info'))
+        <div class="alert alert-success text-center" style="margin:20px;">
+            {{ Session::get('info') }}
+        </div>
+        @endif
         <div class="row">
-            <form  action="{{ route('write', ['id' => 1 ]) }}" method="post" class="col-md-6" id="review1">
-            @include('partials.errors')
-                <div class="form-group">
-                    <label for="reviewbox">
-                        <h5>Your Review</h5>
-                    </label>
-                    <textarea type="text" class="form-control" id="reviewbox" aria-describedby="reviewlHelp" placeholder="Write a Review" style="min-height:100px" name="review" required></textarea>
-                    <small id="reviewHelp" class="form-text text-muted">Tell us how you feel about the product.</small>
-                </div>
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-primary">Submit</button/>
+            
+            <div class="col-md-6" id="review1">
+                @guest
+                    <div class="card-body bg-light">
+                        <h5 style="display:inline-block">Please Log In to Write a Review</h5>&nbsp; &nbsp;
+                        <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                    </div>
+                
+
+                @else
+                    <form action="{{ route('write', ['id' => 1 ]) }}" method="post">
+                        @include('partials.errors')
+                        <div class="form-group">
+                            <label for="reviewbox">
+                                <h5>Your Review</h5>
+                            </label>
+                            <textarea type="text" class="form-control" id="reviewbox" aria-describedby="reviewlHelp" placeholder="Write a Review" style="min-height:100px"
+                                name="review" required></textarea>
+                            <small id="reviewHelp" class="form-text text-muted">Tell us how you feel about the product.</small>
+                        </div>
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-primary">Submit
+                            </button/>
+                    </form>
+                @endguest
                 <hr>
-                <p>The rating of the product is generated based on the review you provide.</p>
-            </form>
+                <p>The product rating is generated based on the review you provide</p>
+            </div>
 
             <div class="col-md-6" id="review">
                 <h5>Previous Reviews</h5>

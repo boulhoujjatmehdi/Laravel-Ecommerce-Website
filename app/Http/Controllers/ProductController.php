@@ -26,11 +26,9 @@ class ProductController extends Controller
         $this->validate($request, [ 
             'review' => 'required|min:5',
         ]);
+        
         $user = Auth::user();
-       /*  if(!$user)
-        {
-            return redirect()->back();
-        } */
+
         $review = new Review([
             'review' => $request->input('review'),
             'user_id' => Auth::id(),
@@ -39,6 +37,6 @@ class ProductController extends Controller
         ]);
 
         $review->save();
-        return back()->with('info', 'Thank You for the Review');
+        return redirect()->back()->with('info', 'Review Recorded. Thank You for the Review');
     }
 }
