@@ -26,17 +26,25 @@ class ProductController extends Controller
         $this->validate($request, [ 
             'review' => 'required|min:5',
         ]);
-        
+
         $user = Auth::user();
 
         $review = new Review([
             'review' => $request->input('review'),
             'user_id' => Auth::id(),
             'product_id' => $id,
-            'rating' => 2.5
+            'rating' => mt_rand(10, 50)/10
         ]);
 
         $review->save();
+        $avg = Review::where('product_id','=',$id)->avg('rating');
+        
+        /* $product= Product::where('id','=',$id)->first();
+        $product->rating = $avg;
+        $product->save(); */
+
+        Product::where('id','=',$id)->update(['rating' => $avg]);
+
         return redirect()->back()->with('info', 'Review Recorded. Thank You for the Review');
     }
 }
