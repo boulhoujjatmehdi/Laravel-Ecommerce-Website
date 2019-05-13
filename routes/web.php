@@ -15,13 +15,21 @@ Route::get('/', function () {
     return view('section.home');
 })->name('home');
 
-Route::get('products', function () {
-    return view('section.products');
-})->name('section.products');
+Route::get('products', [
+    'uses' =>  'ProductController@getIndex',
+    'as' => 'section.products'
+]);
 
-Route::get('products/{id}', function () {
-    return view('section.product');
-})->name('section.product');
+Route::get('products/{id}', [
+    'uses' => 'ProductController@getProduct',
+    'as' => 'section.product'
+]);
+
+Route::post('products/{id}/review',[
+    'uses' =>  'ProductController@postWriteReview',
+    'as' => 'write',
+    'middleware' => 'auth'
+]);
 
 Route::get('project-members', function () {
     return view('section.members');
