@@ -7,7 +7,7 @@ __This is a simple e-commerce website built with Laravel framework__
 - A rating(random number between 1-5) will be generated for each review (see below to know why). The average of all ratings for a particular product will be used to generate overall rating for that product.
 
 > __Limitations__
-- Currently does not have _adding to cart_ facility.
+- Logging out results in loss of items in the cart
 
 > __Why Random Rating?__
 
