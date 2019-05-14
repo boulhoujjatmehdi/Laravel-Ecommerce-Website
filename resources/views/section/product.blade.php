@@ -11,6 +11,7 @@
                 <h5>{{ $product->name }}</h5>
                 <h4><span class="badge badge-success">{{ $product->rating }}</span> Stars</h4>
                 <h5>Rs. {{ $product->price }}</h5>
+                <a href="{{ route('addtocart', ['id' => $product->id ]) }}" class="btn btn-info btn-sm">Add to cart</a>
             </div>
             <div class="col-md-5">
                 <h5>Recommended Similar Products</h5>
@@ -54,41 +55,6 @@
                 <hr>
                 <p>The product rating is generated based on the review you provide</p>
             </div>
-
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                crossorigin="anonymous"></script>
-
-            <script>
-                let reviewtext;
-                $("#reviewbox").change(function () {
-                    reviewtext = $('#reviewbox').val();
-                });
-
-                $("#submit").click(function (event) {
-                    let message = {
-                        review: reviewtext
-                    }
-
-                   /*  $.post("http://127.0.0.1:80/predict.py", JSON.stringify(message), function (response) {
-                        var rating = response.prediction.positive.tofixed(1);
-                        alert("Hello Rating");
-                        //$("#rating").text(response.prediction.positive.tofixed(1));
-                    }); */
-                    alert("Making Request");
-                    $.ajax({
-                        type: "POST",
-                        url: "http://127.0.0.1:80/predict",
-                        data: JSON.stringify(message),
-                        success: function (response) {
-                            alert("Success");
-                        },
-                        error: function (data) {
-                            alert("Fail");
-                        },
-                    });
-                });
-
-            </script>
 
             <div class="col-md-6" id="review">
                 <h5>Previous Reviews</h5>

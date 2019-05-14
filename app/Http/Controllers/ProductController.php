@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Cart;
 use App\Product;
 use App\Review;
 use Auth;
@@ -46,5 +47,18 @@ class ProductController extends Controller
         Product::where('id','=',$id)->update(['rating' => $avg]);
 
         return redirect()->back()->with('info', 'Review Recorded. Thank You for the Review');
+    }
+
+    public function addToCart($id)
+    {
+        $product = Product::find($id[0]);
+        Cart::add($product->id.$product->name, $product->name, 1, $product->price);
+        return redirect()->back()->with('info', 'Item added to cart');
+    }
+
+    public function removeFromCart($id)
+    {
+        Cart::remove($id);
+        return redirect()->back()->with('info', 'Item removed from cart');
     }
 }

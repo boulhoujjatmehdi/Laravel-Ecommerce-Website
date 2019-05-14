@@ -31,8 +31,26 @@ Route::post('products/{id}/review',[
     'middleware' => 'auth'
 ]);
 
+Route::get('cart',function(){
+    return view('section.cart');
+})->name('cart');
+
+Route::get('products/{id}/addtocart', [
+    'uses' => 'ProductController@addToCart',
+    'as' => 'addtocart'
+]);
+
+Route::get('products/{id}/remove', [
+    'uses' => 'ProductController@removeFromCart',
+    'as' => 'remove'
+]);
+
+Route::get('checkout',function(){
+    return view('section.checkout');
+})->name('checkout');
+
 Route::get('project-members', function () {
     return view('section.members');
 })->name('section.members');
-    
+
 Auth::routes();

@@ -46,10 +46,10 @@
                 @endguest
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-default my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div style='float:right;'>
+                <a href="{{route('cart')}}"><img src="{{asset('images/sc.png')}}" alt="Cart" height=50></a>
+                <span class="badge badge-danger badge-pill" style="position:relative; left:-22px; top:20px;">{{Cart::count()}}</span>
+            </div>
         </div>
     </div>
 </nav>
